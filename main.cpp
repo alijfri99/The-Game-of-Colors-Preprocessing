@@ -1,6 +1,7 @@
 #include <iostream>
 #include<fstream>
 #include<vector>
+#include<algorithm>
 #include "Color.h"
 #include "Map.h"
 #include "Node.h"
@@ -11,7 +12,7 @@ using namespace std;
 
 int main()
 {
-	for (int file_name = 100; file_name >= 1; file_name--)
+	for (int file_name = 5; file_name >= 1; file_name--)
 	{
 		ifstream file("predicted_depths/" + to_string(file_name) + ".bin", ios::in | ios::binary);
 		while (file)
@@ -34,6 +35,11 @@ int main()
 				}
 			}
 			map.print();
+			cout << endl;
+
+			Map m = map.copy();
+			sort(m.game.begin(), m.game.end());
+			m.print();
 			cout << endl;
 
 			Node node(map, -1, -1, "");

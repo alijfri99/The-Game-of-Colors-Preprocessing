@@ -114,7 +114,9 @@ int Node::calculate_h()
 	{
 		for (int j = 0; j < this->map.cols; j++)
 		{
-			result += abs(i - sorted_indices[this->map.at(i, j).hash()].i) + abs(j - sorted_indices[this->map.at(i, j).hash()].j);
+			//result += abs(i - sorted_indices[this->map.at(i, j).hash()].i) + abs(j - sorted_indices[this->map.at(i, j).hash()].j);
+			if (i != sorted_indices[this->map.at(i, j).hash()].i || j != sorted_indices[this->map.at(i, j).hash()].j)
+				result += 1;
 		}
 	}
 
