@@ -6,6 +6,7 @@
 #include<queue>
 #include<string>
 #include "Node.h"
+#include "Color.h"
 
 using namespace std;
 

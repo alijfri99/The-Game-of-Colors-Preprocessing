@@ -1,4 +1,5 @@
 #include <iostream>
+#include<fstream>
 #include<vector>
 #include "Color.h"
 #include "Map.h"
@@ -17,8 +18,19 @@ int main()
 
 	map.print();
 
-	Node n(map, -1, -1, "");
+	ifstream file("predicted_depths/1.bin", ios::in | ios::binary);
+	
+	file.read((char *) &(map.rows), sizeof(int));
+	file.read((char *) &(map.cols), sizeof(int));
 
-	BFS_al_Roverso bfs_al_roverso;
-	bfs_al_roverso.search(n);
+	Color temp;
+	for (int i = 0; i < map.rows; i++)
+	{
+		for (int j = 0; j < map.cols; j++)
+		{
+			file.read((char *)&temp, sizeof(temp));
+			map.add(i, j, temp);
+		}
+	}
+	map.print();
 }

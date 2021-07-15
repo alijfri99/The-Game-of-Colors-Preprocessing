@@ -3,7 +3,14 @@
 void BFS_al_Roverso::append_to_file(Node node)
 {
 	ofstream file("predicted_depths/" + to_string(node.depth) + ".bin", ios::out | ios::binary | ios::app);
-	file.write((const char *) &(node.map), sizeof(node.map));
+	file.write((const char *) &(node.map.rows), sizeof(int));
+	file.write((const char *) &(node.map.cols), sizeof(int));
+
+	for (Color color : node.map.game)
+	{
+		file.write((const char *)&color, sizeof(color));
+	}
+
 	file.close();
 }
 
