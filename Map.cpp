@@ -1,5 +1,7 @@
 #include "Map.h"
 
+Map::Map() {}
+
 Map::Map(int rows, int cols)
 {
 	this->rows = rows;

@@ -13,4 +13,8 @@ int main()
 	map.add(1, 1, *(new Color(100, 0, 100)));
 
 	map.print();
+
+	map.add(1, 0, map.at(1, 0).invert());
+	map.print();
+	cout << map.at(1, 0).red << " " << map.at(1, 0).green << " " << map.at(1, 0).blue << endl;
 }

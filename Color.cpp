@@ -15,11 +15,10 @@ Color::Color(int red, int green, int blue)
 	this->blue = blue;
 }
 
-void Color::invert()
+Color Color::invert()
 {
-	this->red = 255 - this->red;
-	this->green = 255 - this->green;
-	this->blue = 255 - this->blue;
+	Color inversion(255 - this->red, 255 - this->green, 255 - this->blue);
+	return inversion;
 }
 
 int Color::magnitude()
