@@ -1,7 +1,6 @@
 #include <iostream>
 #include<fstream>
 #include<vector>
-#include<algorithm>
 #include "Color.h"
 #include "Map.h"
 #include "Node.h"
@@ -35,9 +34,12 @@ int main()
 				}
 			}
 			map.print();
-			sort(map.game.begin(), map.game.end());
+			Map m = map.copy();
+			sort(m.game.begin(), m.game.end());
 			cout << endl;
 			map.print();
+			cout << endl;
+			m.print();
 			cin.get();
 
 		}
