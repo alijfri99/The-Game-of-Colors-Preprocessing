@@ -20,14 +20,14 @@ vector<Node> Node::reverse_successor(int index)
 		{
 			if (j > 0) //left swap is possible
 			{
-				Node left_move = *(new Node(this->map, index, this->depth, ""));
+				Node left_move = *(new Node(this->map.copy(), index, this->depth, ""));
 				left_move.map.add(i, j, left_move.map.at(i, j).invert());
 				left_move.map.swap(i, j, i, j - 1);
 				result.push_back(left_move);
 			}
 			if (i > 0) //up swap is possible
 			{
-				Node up_move = *(new Node(this->map, index, this->depth, ""));
+				Node up_move = *(new Node(this->map.copy(), index, this->depth, ""));
 				up_move.map.add(i, j, up_move.map.at(i, j).invert());
 				up_move.map.swap(i, j, i - 1, j);
 				result.push_back(up_move);
@@ -48,14 +48,14 @@ vector<Node> Node::successor(int index)
 		{
 			if (j < this->map.cols - 1) //right swap is possible
 			{
-				Node right_move = *(new Node(this->map, index, this->depth, std::to_string(i) + " " + std::to_string(j) + " right"));
+				Node right_move = *(new Node(this->map.copy(), index, this->depth, std::to_string(i) + " " + std::to_string(j) + " right"));
 				right_move.map.add(i, j, right_move.map.at(i, j).invert());
 				right_move.map.swap(i, j, i, j + 1);
 				result.push_back(right_move);
 			}
 			if (i < this->map.rows - 1) //down swap is possible
 			{
-				Node down_move = *(new Node(this->map, index, this->depth, std::to_string(i) + " " + std::to_string(j) + " down"));
+				Node down_move = *(new Node(this->map.copy(), index, this->depth, std::to_string(i) + " " + std::to_string(j) + " down"));
 				down_move.map.add(i, j, down_move.map.at(i, j).invert());
 				down_move.map.swap(i, j, i + 1, j);
 				result.push_back(down_move);

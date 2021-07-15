@@ -1,10 +1,12 @@
 #include <iostream>
 #include<fstream>
 #include<vector>
+#include<algorithm>
 #include "Color.h"
 #include "Map.h"
 #include "Node.h"
-#include "BFS_al_Roverso.h"
+#include "DFS_al_Roverso.h"
+#include "BFS.h"
 
 using namespace std;
 
@@ -32,12 +34,12 @@ int main()
 					map.add(i, j, color);
 				}
 			}
+			map.print();
+			sort(map.game.begin(), map.game.end());
+			cout << endl;
+			map.print();
+			cin.get();
 
-			Node node(map, -1, -1, "");
-			if (!node.is_goal())
-			{
-				
-			}
 		}
 	}
 }

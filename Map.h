@@ -17,6 +17,7 @@ public:
 	Color at(int i, int j);
 	void swap(int i1, int j1, int i2, int j2);
 	void print();
+	Map copy();
 };
 
 #endif MAP_H

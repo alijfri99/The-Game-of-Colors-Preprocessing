@@ -9,6 +9,7 @@ public:
 	Color(int red, int green, int blue);
 	Color invert();
 	int magnitude();
+	bool operator < (Color c);
 };
 
 #endif

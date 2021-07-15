@@ -123,13 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="BFS_al_Roverso.h" />
+    <ClInclude Include="BFS.h" />
+    <ClInclude Include="DFS_al_Roverso.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BFS_al_Roverso.cpp" />
+    <ClCompile Include="BFS.cpp" />
+    <ClCompile Include="DFS_al_Roverso.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

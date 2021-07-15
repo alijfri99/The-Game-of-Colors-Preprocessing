@@ -38,3 +38,18 @@ void Map::print()
 		cout << endl;
 	}
 }
+
+Map Map::copy()
+{
+	Map result(this->rows, this->cols);
+
+	for (int i = 0; i < this->rows; i++)
+	{
+		for (int j = 0; j < this->cols; j++)
+		{
+			result.add(i, j, *(new Color(this->at(i, j).red, this->at(i, j).green, this->at(i, j).blue)));
+		}
+	}
+
+	return result;
+}

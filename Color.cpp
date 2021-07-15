@@ -26,3 +26,8 @@ int Color::magnitude()
 	int result = sqrt((this->red * this->red) + (this->green * this->green) + (this->blue * this->blue));
 	return result;
 }
+
+bool Color::operator < (Color c)
+{
+	return this->magnitude() < c.magnitude();
+}
