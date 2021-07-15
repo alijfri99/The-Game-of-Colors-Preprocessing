@@ -36,6 +36,21 @@ vector<Node> Node::reverse_successor(int index)
 	return result;
 }
 
+string Node::hash()
+{
+	string result = "";
+
+	for (int i = 0; i < this->map.rows; i++)
+	{
+		for (int j = 0; j < this->map.cols; j++)
+		{
+			result += std::to_string(this->map.at(i, j).red) + "," + std::to_string(this->map.at(i, j).green) + "," + std::to_string(this->map.at(i, j).blue) + ",";
+		}
+	}
+
+	return result;
+}
+
 bool Node::is_goal()
 {
 	for (int i = 0; i < this->map.game.size() - 1; i++)

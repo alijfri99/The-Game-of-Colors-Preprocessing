@@ -129,6 +129,7 @@
     <ClInclude Include="Node.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BFS_al_Roverso.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
