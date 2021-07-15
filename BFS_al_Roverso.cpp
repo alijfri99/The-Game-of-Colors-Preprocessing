@@ -16,9 +16,9 @@ void BFS_al_Roverso::append_to_file(Node node)
 
 void BFS_al_Roverso::search(Node initial_node)
 {
-	vector<Node> nodes(1000000);
+	vector<Node> nodes(6000);
 	int index = 0;
-	queue<int> frontier;
+	stack<int> frontier;
 	unordered_map<string, bool> in_frontier;
 	unordered_map<string, bool> explored;
 	int max_depth = 0;
@@ -29,7 +29,7 @@ void BFS_al_Roverso::search(Node initial_node)
 
 	while (!frontier.empty() && max_depth <= 100)
 	{
-		int current_index = frontier.front();
+		int current_index = frontier.top();
 		Node temp = nodes[current_index];
 		frontier.pop();
 		in_frontier[temp.hash()] = false;
@@ -52,7 +52,10 @@ void BFS_al_Roverso::search(Node initial_node)
 
 					if (child.depth > max_depth)
 						max_depth = child.depth;
-					cout << child.depth << endl;
+					cout << child.depth  << " " << index << endl;
+
+					if (index == 5999)
+						return;
 				}
 			}
 		}
