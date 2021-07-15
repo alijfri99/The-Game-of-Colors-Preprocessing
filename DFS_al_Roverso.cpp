@@ -1,6 +1,6 @@
 #include "BFS_al_Roverso.h"
 
-void BFS_al_Roverso::append_to_file(Node node)
+void DFS_al_Roverso::append_to_file(Node node)
 {
 	ofstream file("predicted_depths/" + to_string(node.depth) + ".bin", ios::out | ios::binary | ios::app);
 	file.write((const char *) &(node.map.rows), sizeof(int));
@@ -14,7 +14,7 @@ void BFS_al_Roverso::append_to_file(Node node)
 	file.close();
 }
 
-void BFS_al_Roverso::search(Node initial_node)
+void DFS_al_Roverso::search(Node initial_node)
 {
 	vector<Node> nodes(6000);
 	int index = 0;

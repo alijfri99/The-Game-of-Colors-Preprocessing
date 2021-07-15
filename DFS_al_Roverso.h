@@ -10,7 +10,7 @@
 
 using namespace std;
 
-class BFS_al_Roverso
+class DFS_al_Roverso
 {
 public:
 	void search(Node initial_node);
