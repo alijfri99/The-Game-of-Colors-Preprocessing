@@ -1,6 +1,13 @@
 #include "Color.h"
 #include<cmath>
 
+Color::Color()
+{
+	this->red = 0;
+	this->green = 0;
+	this->blue = 0;
+}
+
 Color::Color(int red, int green, int blue)
 {
 	this->red = red;
@@ -17,6 +24,6 @@ void Color::invert()
 
 int Color::magnitude()
 {
-	int result = sqrt((this->red * this->red) + (this->green * this->green) + (this->blue + this->blue));
+	int result = sqrt((this->red * this->red) + (this->green * this->green) + (this->blue * this->blue));
 	return result;
 }

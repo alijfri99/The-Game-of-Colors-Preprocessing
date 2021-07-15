@@ -5,6 +5,7 @@ class Color
 {
 public:
 	int red, green, blue;
+	Color();
 	Color(int red, int green, int blue);
 	void invert();
 	int magnitude();
