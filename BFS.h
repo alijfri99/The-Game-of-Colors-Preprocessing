@@ -1,20 +1,20 @@
-#ifndef DFS_AL_ROVERSO_H
-#define DFS_AL_ROVERSO_H
+#ifndef BFS_H
+#define BFS_H
 #include<fstream>
 #include<unordered_map>
 #include<vector>
-#include<stack>
+#include<queue>
 #include<string>
 #include "Node.h"
 #include "Color.h"
 
 using namespace std;
 
-class DFS_al_Roverso
+class BFS
 {
 public:
 	void search(Node initial_node);
-	void append_to_file(Node node);
+	void append_to_file(Node node, Node goal_node);
 };
 
 #endif
