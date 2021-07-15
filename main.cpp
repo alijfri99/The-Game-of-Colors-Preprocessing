@@ -3,6 +3,7 @@
 #include "Color.h"
 #include "Map.h"
 #include "Node.h"
+#include "BFS_al_Roverso.h"
 
 using namespace std;
 
@@ -18,14 +19,6 @@ int main()
 
 	Node n(map, -1, -1, "");
 
-	vector<Node> s = n.reverse_successor(0);
-
-	while (!s.empty())
-	{
-		Node child = s.back();
-		s.pop_back();
-		child.map.print();
-		cout << child.is_goal() << endl;
-		cout << child.hash();
-	}
+	BFS_al_Roverso bfs_al_roverso;
+	bfs_al_roverso.search(n);
 }

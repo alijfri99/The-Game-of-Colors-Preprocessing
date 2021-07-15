@@ -1,5 +1,7 @@
 #include "Node.h"
 
+Node::Node() {}
+
 Node::Node(Map map, int parent_index, int parent_depth, string action)
 {
 	this->map = map;
