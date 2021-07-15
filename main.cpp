@@ -1,6 +1,8 @@
 #include <iostream>
+#include<vector>
 #include "Color.h"
 #include "Map.h"
+#include "Node.h"
 
 using namespace std;
 
@@ -14,7 +16,14 @@ int main()
 
 	map.print();
 
-	map.add(1, 0, map.at(1, 0).invert());
-	map.print();
-	cout << map.at(1, 0).red << " " << map.at(1, 0).green << " " << map.at(1, 0).blue << endl;
+	Node n(map, -1, -1, "");
+
+	vector<Node> s = n.reverse_successor(0);
+
+	while (!s.empty())
+	{
+		Node child = s.back();
+		s.pop_back();
+		child.map.print();
+	}
 }

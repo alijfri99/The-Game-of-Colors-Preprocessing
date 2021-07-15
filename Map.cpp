@@ -20,6 +20,13 @@ Color Map::at(int i, int j)
 	return this->game[(i * this->cols) + j];
 }
 
+void Map::swap(int i1, int j1, int i2, int j2)
+{
+	Color temp = this->at(i1, j1);
+	this->add(i1, j1, this->at(i2, j2));
+	this->add(i2, j2, temp);
+}
+
 void Map::print()
 {
 	for (int i = 0; i < this->rows; i++)

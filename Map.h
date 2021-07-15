@@ -15,7 +15,7 @@ public:
 	Map(int rows, int cols);
 	void add(int i, int j, Color color);
 	Color at(int i, int j);
-	//void swap()
+	void swap(int i1, int j1, int i2, int j2);
 	void print();
 };
 
