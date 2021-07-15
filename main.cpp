@@ -34,12 +34,10 @@ int main()
 				}
 			}
 			map.print();
-			Map m = map.copy();
-			sort(m.game.begin(), m.game.end());
 			cout << endl;
-			map.print();
-			cout << endl;
-			m.print();
+
+			Node node(map, -1, -1, "");
+			cout << node.calculate_h() << endl;
 			cin.get();
 
 		}

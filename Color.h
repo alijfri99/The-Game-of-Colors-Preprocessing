@@ -10,6 +10,7 @@ public:
 	Color invert();
 	int magnitude();
 	bool operator < (Color c);
+	float hash();
 };
 
 #endif

@@ -31,3 +31,9 @@ bool Color::operator < (Color c)
 {
 	return this->magnitude() < c.magnitude();
 }
+
+float Color::hash()
+{
+	float result = sqrt((this->red * this->red) + (this->green * this->green) + (this->blue * this->blue));
+	return result;
+}
