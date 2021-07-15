@@ -11,6 +11,7 @@ public:
 	int depth;
 	string action;
 	vector<Node> reverse_successor(int index);
+	vector<Node> successor(int index);
 	string hash();
 	Node();
 	Node(Map map, int parent_index, int parent_depth, string action);
