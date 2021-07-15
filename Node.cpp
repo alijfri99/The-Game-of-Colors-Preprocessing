@@ -35,3 +35,14 @@ vector<Node> Node::reverse_successor(int index)
 
 	return result;
 }
+
+bool Node::is_goal()
+{
+	for (int i = 0; i < this->map.game.size() - 1; i++)
+	{
+		if (this->map.game[i].magnitude() > this->map.game[i + 1].magnitude())
+			return false;
+	}
+
+	return true;
+}

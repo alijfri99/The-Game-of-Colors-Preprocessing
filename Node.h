@@ -13,6 +13,7 @@ public:
 	vector<Node> reverse_successor(int index);
 	string hash();
 	Node(Map map, int parent_index, int parent_depth, string action);
+	bool is_goal();
 };
 
 #endif

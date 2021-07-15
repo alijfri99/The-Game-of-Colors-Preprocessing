@@ -25,5 +25,6 @@ int main()
 		Node child = s.back();
 		s.pop_back();
 		child.map.print();
+		cout << child.is_goal() << endl;
 	}
 }
