@@ -4,9 +4,9 @@
 #include<algorithm>
 #include<unordered_map>
 #include<cmath>
+#include<cstdlib>
 #include "Map.h"
 #include "Tuple.h"
-#include "Color.h"
 
 class Node
 {

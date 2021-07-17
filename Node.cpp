@@ -1,6 +1,9 @@
 #include "Node.h"
 
-Node::Node() {}
+Node::Node() 
+{
+	this->parent_index = -2;
+}
 
 Node::Node(Map map, int parent_index, int parent_depth, string action)
 {
@@ -19,19 +22,35 @@ vector<Node> Node::reverse_successor(int index)
 	{
 		for (int j = 0; j < this->map.cols; j++)
 		{
+			Node left_move;
+			Node up_move;
 			if (j > 0) //left swap is possible
 			{
-				Node left_move = *(new Node(this->map.copy(), index, this->depth, ""));
+				left_move = *(new Node(this->map.copy(), index, this->depth, ""));
 				left_move.map.add(i, j, left_move.map.at(i, j).invert());
 				left_move.map.swap(i, j, i, j - 1);
-				result.push_back(left_move);
 			}
 			if (i > 0) //up swap is possible
 			{
-				Node up_move = *(new Node(this->map.copy(), index, this->depth, ""));
+				up_move = *(new Node(this->map.copy(), index, this->depth, ""));
 				up_move.map.add(i, j, up_move.map.at(i, j).invert());
 				up_move.map.swap(i, j, i - 1, j);
-				result.push_back(up_move);
+			}
+
+			int random_number = rand() % 1000;
+			if (random_number >= 500) //alternating between push orders randomly
+			{
+				if (left_move.parent_index != -2) //the default value for parent_index is -2!!!
+					result.push_back(left_move);
+				if (up_move.parent_index != -2)
+					result.push_back(up_move);
+			}
+			else
+			{
+				if (up_move.parent_index != -2)
+					result.push_back(up_move);
+				if (left_move.parent_index != -2)
+					result.push_back(left_move);
 			}
 		}
 	}
