@@ -1,6 +1,6 @@
-#include "BFS.h"
+#include "AStar.h"
 
-void BFS::append_to_file(Node node, Node goal_node)
+void AStar::append_to_file(Node node, Node goal_node)
 {
 	ofstream file("depths/" + to_string(goal_node.depth) + ".bin", ios::out | ios::binary | ios::app);
 	file.write((const char *) &(node.map.rows), sizeof(int));
@@ -16,7 +16,7 @@ void BFS::append_to_file(Node node, Node goal_node)
 	cout << "Depth: " << goal_node.depth << endl;
 }
 
-int BFS::search(Node initial_node, bool append)
+int AStar::search(Node initial_node, bool append)
 {
 	if (initial_node.is_goal())
 	{
@@ -52,7 +52,7 @@ int BFS::search(Node initial_node, bool append)
 			{
 				if (child.is_goal())
 				{
-					if(append)
+					if (append)
 						this->append_to_file(initial_node, child);
 					return child.depth;
 				}

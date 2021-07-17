@@ -1,5 +1,5 @@
-#ifndef BFS_H
-#define BFS_H
+#ifndef ASTAR_H
+#define ASTAR_H
 #include<fstream>
 #include<unordered_map>
 #include<vector>
@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class BFS
+class AStar
 {
 public:
 	int search(Node initial_node, bool append = false);
