@@ -13,7 +13,7 @@ class BFS
 {
 public:
 	int search(Node initial_node, bool append = false);
-	void append_to_file(Node node, Node goal_node);
+	void append_to_file(Node initial_node, Node goal_node);
 };
 
 #endif

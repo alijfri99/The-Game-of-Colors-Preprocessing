@@ -1,12 +1,12 @@
 #include "BFS.h"
 
-void BFS::append_to_file(Node node, Node goal_node)
+void BFS::append_to_file(Node initial_node, Node goal_node)
 {
 	ofstream file("depths/" + to_string(goal_node.depth) + ".bin", ios::out | ios::binary | ios::app);
-	file.write((const char *) &(node.map.rows), sizeof(int));
-	file.write((const char *) &(node.map.cols), sizeof(int));
+	file.write((const char *) &(initial_node.map.rows), sizeof(int));
+	file.write((const char *) &(initial_node.map.cols), sizeof(int));
 
-	for (Color color : node.map.game)
+	for (Color color : initial_node.map.game)
 	{
 		file.write((const char *)&color, sizeof(color));
 	}
@@ -63,7 +63,7 @@ int BFS::search(Node initial_node, bool append)
 
 				if (index % 10000 == 0)
 				{
-					cout << index << endl;
+					cout << "Heuristic index: " << index << endl;
 				}
 			}
 		}

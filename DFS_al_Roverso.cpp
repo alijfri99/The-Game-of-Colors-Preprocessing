@@ -1,12 +1,12 @@
 #include "DFS_al_Roverso.h"
 
-void DFS_al_Roverso::append_to_file(Node node)
+void DFS_al_Roverso::append_to_file(Node initial_node)
 {
-	ofstream file("predicted_depths/" + to_string(node.depth) + ".bin", ios::out | ios::binary | ios::app);
-	file.write((const char *) &(node.map.rows), sizeof(int));
-	file.write((const char *) &(node.map.cols), sizeof(int));
+	ofstream file("predicted_depths/" + to_string(initial_node.depth) + ".bin", ios::out | ios::binary | ios::app);
+	file.write((const char *) &(initial_node.map.rows), sizeof(int));
+	file.write((const char *) &(initial_node.map.cols), sizeof(int));
 
-	for (Color color : node.map.game)
+	for (Color color : initial_node.map.game)
 	{
 		file.write((const char *)&color, sizeof(color));
 	}

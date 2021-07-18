@@ -14,7 +14,7 @@ class DFS_al_Roverso
 {
 public:
 	void search(Node initial_node);
-	void append_to_file(Node node);
+	void append_to_file(Node initial_node);
 };
 
 #endif

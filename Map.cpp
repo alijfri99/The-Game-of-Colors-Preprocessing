@@ -47,7 +47,7 @@ Map Map::copy()
 	{
 		for (int j = 0; j < this->cols; j++)
 		{
-			result.add(i, j, *(new Color(this->at(i, j).red, this->at(i, j).green, this->at(i, j).blue)));
+			result.add(i, j, this->at(i, j));
 		}
 	}
 
