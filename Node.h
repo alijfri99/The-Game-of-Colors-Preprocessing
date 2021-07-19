@@ -7,6 +7,7 @@
 #include<cstdlib>
 #include "Map.h"
 #include "Tuple.h"
+#include "HeuristicCalculator.h"
 
 class Node
 {
@@ -15,12 +16,12 @@ public:
 	int parent_index;
 	int depth;
 	int h;
-	string action;
-	vector<Node> reverse_successor(int index);
-	vector<Node> successor(int index);
-	string hash();
+	std::string action;
+	std::vector<Node> reverse_successor(int index);
+	std::vector<Node> successor(int index, bool needs_h = true);
+	std::string hash();
 	Node();
-	Node(Map map, int parent_index, int parent_depth, string action);
+	Node(Map map, int parent_index, int parent_depth, std::string action, bool needs_h = true);
 	bool is_goal();
 	int calculate_h();
 };

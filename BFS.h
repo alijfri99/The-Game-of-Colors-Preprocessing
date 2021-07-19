@@ -5,9 +5,9 @@
 #include<vector>
 #include<queue>
 #include<string>
-#include "Node.h"
+class Node;
 
-using namespace std;
+
 
 class BFS
 {

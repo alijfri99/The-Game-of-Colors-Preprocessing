@@ -5,18 +5,22 @@ Node::Node()
 	this->parent_index = -2;
 }
 
-Node::Node(Map map, int parent_index, int parent_depth, string action)
+Node::Node(Map map, int parent_index, int parent_depth, std::string action, bool needs_h)
 {
 	this->map = map;
 	this->parent_index = parent_index;
 	this->depth = parent_depth + 1;
-	this->h = this->calculate_h();
 	this->action = action;
+
+	if (needs_h)
+		this->h = this->calculate_h();
+	else
+		this->h = 0;
 }
 
-vector<Node> Node::reverse_successor(int index)
+std::vector<Node> Node::reverse_successor(int index)
 {
-	vector<Node> result;
+	std::vector<Node> result;
 
 	for (int i = 0; i < this->map.rows; i++)
 	{
@@ -58,9 +62,9 @@ vector<Node> Node::reverse_successor(int index)
 	return result;
 }
 
-vector<Node> Node::successor(int index)
+std::vector<Node> Node::successor(int index, bool needs_h)
 {
-	vector<Node> result;
+	std::vector<Node> result;
 
 	for (int i = 0; i < this->map.rows; i++)
 	{
@@ -68,18 +72,20 @@ vector<Node> Node::successor(int index)
 		{
 			if (j < this->map.cols - 1) //right swap is possible
 			{
-				Node right_move = *(new Node(this->map.copy(), index, this->depth, std::to_string(i) + " " + std::to_string(j) + " right"));
+				Node right_move = *(new Node(this->map.copy(), index, this->depth, std::to_string(i) + " " + std::to_string(j) + " right", needs_h));
 				right_move.map.add(i, j, right_move.map.at(i, j).invert());
 				right_move.map.swap(i, j, i, j + 1);
-				right_move.h = right_move.calculate_h();
+				if(needs_h)
+					right_move.h = right_move.calculate_h();
 				result.push_back(right_move);
 			}
 			if (i < this->map.rows - 1) //down swap is possible
 			{
-				Node down_move = *(new Node(this->map.copy(), index, this->depth, std::to_string(i) + " " + std::to_string(j) + " down"));
+				Node down_move = *(new Node(this->map.copy(), index, this->depth, std::to_string(i) + " " + std::to_string(j) + " down", needs_h));
 				down_move.map.add(i, j, down_move.map.at(i, j).invert());
 				down_move.map.swap(i, j, i + 1, j);
-				down_move.h = down_move.calculate_h();
+				if(needs_h)
+					down_move.h = down_move.calculate_h();
 				result.push_back(down_move);
 			}
 		}
@@ -88,9 +94,9 @@ vector<Node> Node::successor(int index)
 	return result;
 }
 
-string Node::hash()
+std::string Node::hash()
 {
-	string result = "";
+	std::string result = "";
 
 	for (int i = 0; i < this->map.rows; i++)
 	{
@@ -116,7 +122,7 @@ bool Node::is_goal()
 
 int Node::calculate_h()
 {
-	int result = 0;
+	/*int result = 0;
 	Map sorted_map = this->map.copy();
 	unordered_map<float, Tuple> sorted_indices;
 	sort(sorted_map.game.begin(), sorted_map.game.end());
@@ -137,7 +143,7 @@ int Node::calculate_h()
 			if (i != sorted_indices[this->map.at(i, j).hash()].i || j != sorted_indices[this->map.at(i, j).hash()].j)
 				result += 1;
 		}
-	}
-
-	return result;
+	}*/
+	HeuristicCalculator heuristicCalculator;
+	return heuristicCalculator.calculate_heuristic(this->map);
 }

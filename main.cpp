@@ -9,13 +9,13 @@
 #include "AStar.h"
 #include "HeuristicCalculator.h"
 
-using namespace std;
+
 
 int main()
 {
-	for (int file_name = 20; file_name >= 1; file_name--)
+	for (int file_name = 5; file_name >= 1; file_name--)
 	{
-		ifstream file("predicted_depths/" + to_string(file_name) + ".bin", ios::in | ios::binary);
+		std::ifstream file("predicted_depths/" + std::to_string(file_name) + ".bin", std::ios::in | std::ios::binary);
 		while (file)
 		{
 			int rows = 0;
@@ -36,16 +36,16 @@ int main()
 				}
 			}
 			map.print();
-			cout << endl;
-			string s;
-			cin >> s;
+			std::cout << std::endl;
+			std::string s;
+			std::cin >> s;
 			if (s == "skip")
 				continue;
 			Node n(map, -1, -1, "");
 			AStar aStar;
 			int a = aStar.search(n);
-			cout << a << endl;
-			cin.get();
+			std::cout << a << std::endl;
+			std::cin.get();
 		}
 	}
 }

@@ -6,7 +6,7 @@ Map::Map(int rows, int cols)
 {
 	this->rows = rows;
 	this->cols = cols;
-	vector<Color> temp(rows * cols);
+	std::vector<Color> temp(rows * cols);
 	this->game = temp;
 }
 
@@ -33,9 +33,9 @@ void Map::print()
 	{
 		for (int j = 0; j < this->cols; j++)
 		{
-			cout << at(i, j).magnitude() << " ";
+			std::cout << at(i, j).magnitude() << " ";
 		}
-		cout << endl;
+		std::cout << std::endl;
 	}
 }
 

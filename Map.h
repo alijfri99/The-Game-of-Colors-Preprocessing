@@ -4,13 +4,13 @@
 #include<vector>
 #include "Color.h"
 
-using namespace std;
+
 
 class Map
 {
 public:
 	int rows, cols;
-	vector<Color> game;
+	std::vector<Color> game;
 	Map();
 	Map(int rows, int cols);
 	void add(int i, int j, Color color);

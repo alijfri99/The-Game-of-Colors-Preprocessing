@@ -99,14 +99,14 @@ int HeuristicCalculator::calculate_heuristic(Map map)
 	map8.add(0, 0, map.at(4, 2));
 	map8.add(0, 1, map.at(4, 3));
 
-	Node node1(map1, -1, -1, "");
-	Node node2(map2, -1, -1, "");
-	Node node3(map3, -1, -1, "");
-	Node node4(map4, -1, -1, "");
-	Node node5(map5, -1, -1, "");
-	Node node6(map6, -1, -1, "");
-	Node node7(map7, -1, -1, "");
-	Node node8(map8, -1, -1, "");
+	Node node1(map1, -1, -1, "", false);
+	Node node2(map2, -1, -1, "", false);
+	Node node3(map3, -1, -1, "", false);
+	Node node4(map4, -1, -1, "", false);
+	Node node5(map5, -1, -1, "", false);
+	Node node6(map6, -1, -1, "", false);
+	Node node7(map7, -1, -1, "", false);
+	Node node8(map8, -1, -1, "", false);
 	BFS bfs;
 
 	int h1 = bfs.search(node1);

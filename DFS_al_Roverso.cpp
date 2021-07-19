@@ -2,7 +2,7 @@
 
 void DFS_al_Roverso::append_to_file(Node initial_node)
 {
-	ofstream file("predicted_depths/" + to_string(initial_node.depth) + ".bin", ios::out | ios::binary | ios::app);
+	std::ofstream file("predicted_depths/" + std::to_string(initial_node.depth) + ".bin", std::ios::out | std::ios::binary | std::ios::app);
 	file.write((const char *) &(initial_node.map.rows), sizeof(int));
 	file.write((const char *) &(initial_node.map.cols), sizeof(int));
 
@@ -16,11 +16,11 @@ void DFS_al_Roverso::append_to_file(Node initial_node)
 
 void DFS_al_Roverso::search(Node initial_node)
 {
-	vector<Node> nodes(6000);
+	std::vector<Node> nodes(6000);
 	int index = 0;
-	stack<int> frontier;
-	unordered_map<string, bool> in_frontier;
-	unordered_map<string, bool> explored;
+	std::stack<int> frontier;
+	std::unordered_map<std::string, bool> in_frontier;
+	std::unordered_map<std::string, bool> explored;
 	int max_depth = 0;
 
 	nodes[index] = initial_node;
@@ -35,7 +35,7 @@ void DFS_al_Roverso::search(Node initial_node)
 		in_frontier[temp.hash()] = false;
 		explored[temp.hash()] = true;
 
-		vector<Node> children = temp.reverse_successor(current_index);
+		std::vector<Node> children = temp.reverse_successor(current_index);
 		while (!children.empty())
 		{
 			Node child = children.back();
@@ -52,7 +52,7 @@ void DFS_al_Roverso::search(Node initial_node)
 
 					if (child.depth > max_depth)
 						max_depth = child.depth;
-					cout << child.depth  << " " << index << endl;
+					std::cout << child.depth  << " " << index << std::endl;
 
 					if (index == 5999)
 						return;
