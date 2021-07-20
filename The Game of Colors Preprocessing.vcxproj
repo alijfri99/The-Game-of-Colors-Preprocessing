@@ -130,6 +130,7 @@
     <ClInclude Include="AStar.h" />
     <ClInclude Include="BFS.h" />
     <ClInclude Include="CompareNode.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="DFS_al_Roverso.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="HeuristicCalculator.h" />
@@ -141,6 +142,7 @@
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="BFS.cpp" />
     <ClCompile Include="CompareNode.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="DFS_al_Roverso.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="HeuristicCalculator.cpp" />

@@ -8,12 +8,13 @@
 #include "DFS_al_Roverso.h"
 #include "AStar.h"
 #include "HeuristicCalculator.h"
+#include "Database.h"
 
 
 
 int main()
 {
-	for (int file_name = 5; file_name >= 1; file_name--)
+	/*for (int file_name = 5; file_name >= 1; file_name--)
 	{
 		std::ifstream file("predicted_depths/" + std::to_string(file_name) + ".bin", std::ios::in | std::ios::binary);
 		while (file)
@@ -47,5 +48,23 @@ int main()
 			std::cout << a << std::endl;
 			std::cin.get();
 		}
+	}*/
+	Database::init();
+	//Database::write("sibbe", 42);
+
+	std::cout << Database::find("gholi") << " " << Database::find("kamal") << " " << Database::find("ali") << " " << Database::find("sibbe") << std::endl;
+	/*std::ifstream file("pattern_database.bin", std::ios::in | std::ios::binary);
+
+	size_t size;
+	while (file.read((char *)&size, sizeof(size)));
+	{
+		std::string key;
+		int value;
+		key.resize(size);
+		file.read((char *)&key[0], size);
+		file.read((char *)&value, sizeof(int));
+		std::cout << "key: "<< key << " " << value << std::endl;
 	}
+
+	file.close();*/
 }
