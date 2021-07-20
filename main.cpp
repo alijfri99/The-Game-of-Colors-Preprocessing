@@ -14,18 +14,21 @@
 
 int main()
 {
-	/*for (int file_name = 5; file_name >= 1; file_name--)
+	Database::init();
+	std::string s;
+
+	for (int file_name = 1; file_name <=100; file_name++)
 	{
 		std::ifstream file("predicted_depths/" + std::to_string(file_name) + ".bin", std::ios::in | std::ios::binary);
-		while (file)
+
+		int rows = 0;
+		int cols = 0;
+		Color color;
+		int i = 1;
+
+		while (file.read((char *)&rows, sizeof(int)))
 		{
-			int rows = 0;
-			int cols = 0;
-			Color color;
-
-			file.read((char *)&rows, sizeof(int));
 			file.read((char *)&cols, sizeof(int));
-
 			Map map(rows, cols);
 
 			for (int i = 0; i < rows; i++)
@@ -36,35 +39,26 @@ int main()
 					map.add(i, j, color);
 				}
 			}
+			std::cout << "Predicted depth: " << file_name << ", Iteration: " << i << std::endl << std::endl;
 			map.print();
 			std::cout << std::endl;
-			std::string s;
-			std::cin >> s;
+			if(s != "proceed" || i % 40 == 0)
+				std::cin >> s;
+
 			if (s == "skip")
+			{
+				i++;
 				continue;
+			}
+			else if (s == "skipdepth")
+				break;
+
 			Node n(map, -1, -1, "");
 			AStar aStar;
-			int a = aStar.search(n);
+			int a = aStar.search(n, true);
 			std::cout << a << std::endl;
-			std::cin.get();
+			Database::commit();
+			i++;
 		}
-	}*/
-	Database::init();
-	//Database::write("sibbe", 42);
-
-	std::cout << Database::find("gholi") << " " << Database::find("kamal") << " " << Database::find("ali") << " " << Database::find("sibbe") << std::endl;
-	/*std::ifstream file("pattern_database.bin", std::ios::in | std::ios::binary);
-
-	size_t size;
-	while (file.read((char *)&size, sizeof(size)));
-	{
-		std::string key;
-		int value;
-		key.resize(size);
-		file.read((char *)&key[0], size);
-		file.read((char *)&value, sizeof(int));
-		std::cout << "key: "<< key << " " << value << std::endl;
 	}
-
-	file.close();*/
 }

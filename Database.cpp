@@ -53,8 +53,11 @@ void Database::commit(std::string filename)
 			file.write((const char *)&size, sizeof(size));
 			file.write((const char *)&key[0], size);
 			file.write((const char *)&value, sizeof(int));
+
+			old_items[key] = value; //this is an old item now!
 		}
 	}
-	
+
+	new_items.clear();
 	file.close();
 }

@@ -99,24 +99,32 @@ int HeuristicCalculator::calculate_heuristic(Map map)
 	map8.add(0, 0, map.at(4, 2));
 	map8.add(0, 1, map.at(4, 3));
 
-	Node node1(map1, -1, -1, "", false);
-	Node node2(map2, -1, -1, "", false);
-	Node node3(map3, -1, -1, "", false);
-	Node node4(map4, -1, -1, "", false);
-	Node node5(map5, -1, -1, "", false);
-	Node node6(map6, -1, -1, "", false);
-	Node node7(map7, -1, -1, "", false);
-	Node node8(map8, -1, -1, "", false);
-	BFS bfs;
 
-	int h1 = bfs.search(node1);
-	int h2 = bfs.search(node2);
-	int h3 = bfs.search(node3);
-	int h4 = bfs.search(node4);
-	int h5 = bfs.search(node5);
-	int h6 = bfs.search(node6);
-	int h7 = bfs.search(node7);
-	int h8 = bfs.search(node8);
+	int h1 = calculate_sub_heuristic(map1);
+	int h2 = calculate_sub_heuristic(map2);
+	int h3 = calculate_sub_heuristic(map3);
+	int h4 = calculate_sub_heuristic(map4);
+	int h5 = calculate_sub_heuristic(map5);
+	int h6 = calculate_sub_heuristic(map6);
+	int h7 = calculate_sub_heuristic(map7);
+	int h8 = calculate_sub_heuristic(map8);
+
+	std::cout << "h1: " << h1 << ", h2: " << h2 << ", h3: " << h3 << ", h4: " << h4 << ", h5: " << h5 << ", h6: " << h6 << ", h7: " << h7 << ", h8: " << h8 << std::endl;
 
 	return (h1 + h2 + h3 + h4 + h5 + h6 + h7 + h8);
+}
+
+int HeuristicCalculator::calculate_sub_heuristic(Map map)
+{
+	Node node(map, -1, -1, "", false);
+	int result = Database::find(node.hash());
+	if (result != -1)
+		return result;
+	else
+	{
+		BFS bfs;
+		result = bfs.search(node);
+		Database::write(node.hash(), result);
+		return result;
+	}
 }
